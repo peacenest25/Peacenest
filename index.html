@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <!-- Meta Information -->
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PeaceNest</title>
+
+  <!-- Favicon -->
+  <link rel="icon" href="/logo.png">
+
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="/logo.png" />
+  <meta name="theme-color" content="#000000" />
+  <link rel="stylesheet" text="text/CSS"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+  <link rel="stylesheet" type="text/css"
+    href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="css/footer.css">
+</head>
+
+<body onload="myFunction()">
+
+  <!-- Preloader -->
+
+  <div class="loading-wrapper">
+    <img src="./logo.png" id="loading" />
+  </div>
+
+  <!-- Header Section -->
+  <header>
+
+    <nav class="nav" id="nav">
+
+      <!-- Logo -->
+      <div>
+        <a class="navbar-brand" href="#!"> <img src="logo.png" alt="Logo" class="logo" /></a>
+      </div>
+
+      <!-- Navigation Links -->
+      <div class="nav-links" id="navLinks">
+        <ul class="links" id="navmenu">
+          <li><a href="#">HOME</a></li>
+          <li><a href="#about">ABOUT</a></li>
+          <li><a href="#services">SERVICES </a></li>
+          <li><a href="html/contact.html">CONTACT US </a></li>
+        </ul>
+      </div>
+
+      <!-- Login/Profile Button -->
+      <div id="userProfileContainer">
+        <button class="login-button" id="loginButtonContainer">
+          <a href="html/login.html">SignUp / Login</a>
+        </button>
+        <div id="userProfile" style="display: none; position: relative;">
+          <i class="fas fa-user-circle" id="profileIcon" style="font-size: 36px; cursor: pointer;"></i>
+          <div id="profilePopup"
+            style="display: none; position: absolute; top: 40px; right: 0; background: white; border: 1px solid #ccc; border-radius: 5px; box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); padding: 15px; z-index: 100;">
+            <p id="popupName" style="margin: 0; font-weight: bold;"></p>
+            <p id="popupEmail" style="margin: 10px 0;"></p>
+            <button id="logoutButton" onclick="logout()"
+              style="background: #f44336; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">Logout</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hamburger Menu -->
+      <div class="hamburger" id="ham">
+        <i class="cancel fa-solid fa-xmark"></i>
+        <svg class="burger" stroke="currentColor" fill="currentColor" stroke-width="0" viewBox="0 0 1024 1024"
+          height="1em" width="1em" xmlns="http://www.w3.org/2000/svg">
+          <path
+            d="M904 160H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0 624H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8zm0-312H120c-4.4 0-8 3.6-8 8v64c0 4.4 3.6 8 8 8h784c4.4 0 8-3.6 8-8v-64c0-4.4-3.6-8-8-8z">
+          </path>
+        </svg>
+      </div>
+
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="content">
+      <h1>Welcome to PeaceNest</h1>
+      <div class="container">
+        <h3>
+        </h3>
+        <p class="slogan">The one-step solution to get relief from your stress. Live a stress-free life!</p>
+      </div>
+      <a href="#services" class="rainbow-button" alt="Explore"></a>
+    </div>
+
+  </header>
+
+
+  <!-- About Section -->
+
+  <section id="about" class="about">
+    <h1 data-aos="flip-right">About Us</h1>
+    <div class="max-width">
+      <!-- About Image -->
+      <div data-aos="zoom-in" class="photo"><img src="./images/ChatGPT Image Apr 4, 2025, 06_37_19 PM.png" alt="" height="300px" width="330px"></div>
+
+      <!-- About Content -->
+      <div class="about-content">
+        <p data-aos="fade-left" class="text-1">We are a group of Information Technology Engineering Students who created Peacenest with the
+          vision of providing a <span>comprehensive solution</span> for stress relief. </p>
+        <p data-aos="fade-left" class="text-3">Our goal is to help everyone embrace a <span>peaceful and stress-free
+            life</span> through Peacenest.</p>
+      </div>
+    </div>
+
+
+  </section>
+
+  <!-- Services Section -->
+
+  <section id="services">
+    <h1>Our Services</h1>
+    <div data-aos="zoom-in" data-aos-duration="800" class="container">
+      <!-- Service Cards -->
+
+      <div class="responsive audio">
+        <div class="round-image">
+          <img src="./images/audio.png" alt="audio" />
+        </div>
+        <div class="description">
+          <h2>Audio Therapy</h2>
+          <p>
+            Listening to music & other audio files often enlightens our mood.
+          </p>
+          <a href="html/audioTherapy.html" data-requires-login="true">
+            Let's Explore
+          </a>
+        </div>
+      </div>
+
+      <div data-aos="zoom-in" data-aos-duration="800" class="responsive reading">
+        <div class="round-image">
+          <img src="./images/young-black-man-glasses-reading-600nw-2452988501.webp" alt="read" />
+        </div>
+        <div class="description">
+          <h2>Reading Therapy</h2>
+          <p>
+            Motivational quotes and books can help us to divert and change our mood.
+          </p>
+          <a href="html/readingTherapy.html" data-requires-login="true">
+            Let's Explore
+          </a>
+        </div>
+      </div>
+
+      <div data-aos="zoom-in" data-aos-duration="800" class="responsive yoga">
+        <div class="round-image">
+          <img src="./images/cartoon-happy-man-practicing-yoga-in-relaxed-pose-vector-25106754.jpg" alt="yoga" />
+        </div>
+        <div class="description">
+          <h2>Yoga Therapy</h2>
+          <p>
+            Yoga and exercise play a very important role in our lives.
+          </p>
+          <a href="html/yogatherapy.html" data-requires-login="true">
+            Let's Explore
+          </a>
+        </div>
+      </div>
+
+      <div data-aos="zoom-in" data-aos-duration="800" class="responsive laugh">
+        <div class="round-image">
+          <img src="./images/two-men-best-friend-enjoying-together-concept-illustration_1062857-1029.jpg" alt="laughing" />
+        </div>
+        <div class="description">
+          <h2>Laughing Therapy</h2>
+          <p>
+            Laughing is the only medicine which refreshes our mind.
+          </p>
+          <a href="html/laughTherapy.html" data-requires-login="true">
+            Let's Explore
+          </a>
+        </div>
+      </div>
+      <div data-aos="zoom-in" data-aos-duration="800" class="responsive doctor">
+        <div class="round-image">
+          <img src="./images/male-doctors-white-medical-coats-600nw-2380152965.webp" alt="doctor" />
+        </div>
+        <div class="description">
+          <h2>Consult A Doctor</h2>
+          <p>
+            If you're facing too many problems, you should consult a doctor.
+          </p>
+          <a href="https://www.practo.com/pune/counselling-psychologist" target="_blank" data-requires-login="true">
+            Let's Explore
+          </a>
+        </div>
+      </div>
+      <div data-aos="zoom-in" data-aos-duration="800" class="responsive spiritual">
+        <div class="round-image">
+          <img src="./images/pngtree-spiritual-clipart-jaya-vector-png-image_6816926.jpg" alt="spiritual" />
+        </div>
+        <div class="description">
+          <h2>Spiritual Therapy</h2>
+          <p>
+            Helps you to become more mindful in your thinking.
+          </p>
+          <a href="./html/spirituality.html" data-requires-login="true">
+            Let's Explore
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FAQ Section -->
+
+  <section class="faq">
+    <div class="faq_heading">
+      <h1>Frequently Asked Questions</h1>
+    </div>
+    <div class="accordion" style="width: 75%;">
+      <!-- FAQ Items -->
+      <div class="accordion__item">
+        <button class="accordion__btn">
+          <span class="accordion__caption"><i class="far fa-lightbulb"></i>Who are we and what do we do?</span>
+          <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+        </button>
+        <div class="accordion__content">
+          <p>We are a group of Information Technology Engineering Students who have created this website "Peacenest" with the aim to provide a
+            one step solution to get relief from stress...</p>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__btn">
+          <span class="accordion__caption"><i class="far fa-lightbulb"></i>What are the services we offer?</span>
+          <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+        </button>
+        <div class="accordion__content">
+          <p>We offer multiple services like:
+            <br>
+            1. Audio Therapy
+            <br>
+            2. Reading Therapy
+            <br>
+            3. Yoga Therapy
+            <br>
+            4. Laughing Therapy
+            <br>
+            5. Consult a Doctor 
+            <br>
+            6. Spiritual Therapy
+          </p>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__btn">
+          <span class="accordion__caption"><i class="far fa-lightbulb"></i>What is Reading Therapy?</span>
+          <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+        </button>
+        <div class="accordion__content">
+          <p>Reading therapy is a creative art therapy that uses literature to support good
+            mental health and is a versatile and cost-effective treatment. It includes storytelling or the reading of
+            specific texts.</p>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__btn">
+          <span class="accordion__caption"><i class="far fa-lightbulb"></i>What is Audio Therapy?</span>
+          <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+        </button>
+        <div class="accordion__content">
+          <p>Audio Therapy includes auditory and vibratory inputs which are used to influence a person's psychological
+            state, includes sound healing, vibroacoustic sound therapy, music, and music therapy.</p>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__btn">
+          <span class="accordion__caption"><i class="far fa-lightbulb"></i>What is Yoga Therapy?</span>
+          <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+        </button>
+        <div class="accordion__content">
+          <p>Yoga therapy uses yoga postures, breathing exercises, meditation, and guided imagery to improve mental and
+            physical health.</p>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__btn">
+          <span class="accordion__caption"><i class="far fa-lightbulb"></i>What is Laughing Therapy?</span>
+          <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+        </button>
+        <div class="accordion__content">
+          <p>Laughing therapy uses humor to help relieve pain and stress and improve a person's sense of well-being
+            through jokes and playful exercises that encourage hearty, continuous, and lively laughter.</p>
+        </div>
+      </div>
+      <div class="accordion__item">
+        <button class="accordion__btn">
+          <span class="accordion__caption"><i class="far fa-lightbulb"></i>What is Spiritual Therapy?</span>
+          <span class="accordion__icon"><i class="fa fa-plus"></i></span>
+        </button>
+        <div class="accordion__content">
+          <p>Spiritual therapy is a form of counseling that attempts to treat a person's soul as well as mind and body
+            by accessing individual belief systems and using that faith in a higher power to explore areas of conflict
+            in
+            life.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer Section -->
+
+  <footer>
+    <div class="footer-container">
+      <!-- Logo and Info -->
+      <div class="footer-brand">
+        <img src="logo.png" alt="logo" class="footer-logo" />
+        <div class="footer-content">
+          <h2 class="footer-heading">PeaceNest</h2>
+          <p class="footer-tagline">Your path to peace and wellness</p>
+        </div>
+      </div>
+
+      <!-- Copyright and Contact -->
+      <div class="footer-info">
+        <div class="copyright">
+          <p>© 2025 PeaceNest. All rights reserved.</p>
+        </div>
+        <div class="footer-nav">
+          <a href="html/contact.html" class="footer-link">Contact Us</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+  <script>
+
+    let preloader = document.querySelector(".loading-wrapper");
+    function myFunction() {
+      preloader.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+    let navbar = document.querySelector("#nav");
+    let navmenu = document.querySelector("#navmenu");
+
+    window.onscroll = function () {
+      if (window.pageYOffset >= navmenu.offsetTop) {
+        navbar.classList.add("sticky");
+      } else {
+        navbar.classList.remove("sticky");
+      }
+    };
+
+    window.onscroll = () => {
+      if (window.scrollY > 100) {
+        navbar.classList.add('nav-active');
+      } else {
+        navbar.classList.remove('nav-active');
+      }
+    };
+  </script>
+  <script>
+    // Check if user is logged in
+    function isLoggedIn() {
+      return localStorage.getItem('isLoggedIn') === 'true';
+    }
+
+    // Update navigation bar based on login status
+    function updateNavBar() {
+      const loginButtonContainer = document.getElementById('loginButtonContainer');
+      const userProfile = document.getElementById('userProfile');
+      const profilePopup = document.getElementById('profilePopup');
+      const popupName = document.getElementById('popupName');
+      const popupEmail = document.getElementById('popupEmail');
+      const storedUser = JSON.parse(localStorage.getItem('user'));
+
+      if (isLoggedIn() && storedUser) {
+        loginButtonContainer.style.display = 'none';
+        userProfile.style.display = 'block';
+        popupName.textContent = storedUser.username;
+        popupEmail.textContent = storedUser.email;
+      } else {
+        loginButtonContainer.style.display = 'block';
+        userProfile.style.display = 'none';
+      }
+    }
+
+    // Toggle profile popup visibility
+    document.getElementById('profileIcon').addEventListener('click', () => {
+      const profilePopup = document.getElementById('profilePopup');
+      profilePopup.style.display = profilePopup.style.display === 'block' ? 'none' : 'block';
+    });
+
+    // Logout functionality
+    document.getElementById('logoutButton').addEventListener('click', () => {
+      localStorage.removeItem('isLoggedIn');
+      updateNavBar();
+      alert('You have been logged out.');
+    });
+
+    // Add event listeners to "Let's Explore" buttons
+    document.querySelectorAll('a[data-requires-login]').forEach(button => {
+      button.addEventListener('click', function (event) {
+        if (!isLoggedIn()) {
+          event.preventDefault();
+          alert('Please log in to access this feature.');
+          window.location.href = 'html/login.html'; // Redirect to login page
+        }
+      });
+    });
+
+    // Call updateNavBar on page load
+    document.addEventListener('DOMContentLoaded', () => {
+      updateNavBar();
+    });
+  </script>
+
+  <script>
+    $(document).ready(function () {
+      $(".owl-carousel").owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        center: true,
+        navText: [
+          "<i class='fa fa-angle-left'></i>",
+          "<i class='fa fa-angle-right'></i>"
+        ],
+        responsive: {
+          0: {
+            items: 1
+          },
+          600: {
+            items: 1
+          },
+          1000: {
+            items: 3
+          }
+        }
+      });
+    });
+
+
+  </script>
+
+  <script src="js/firebase-config.js"></script>
+  <script src="js/auth.js"></script>
+  <script src="js/index.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    AOS.init();
+  </script>
+
+
+</body>
+
+</html>
