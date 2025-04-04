@@ -1,0 +1,255 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Prompt:wght@600&display=swap");
+
+:root {
+  --main-icon-color: #5328af;
+  --main-bg-color: #f3f3fb;
+}
+
+body {
+  overflow-x: hidden;
+  background-color: var(--main-bg-color);
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+img {
+  max-height: 70vh;
+  object-fit: contain;
+}
+
+.login,
+.register {
+  max-width: 35rem;
+  width: 100%;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  gap: 5rem;
+  margin-left: 16rem;
+}
+
+.image-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  max-width: 50%;
+}
+
+.form-container {
+  flex: 1;
+  max-width: 500px;
+  background-color: #ffffff;
+  padding: 2.5rem;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.welcome {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.inputs {
+  margin: 2.2rem 0;
+}
+
+.button {
+  text-align: center;
+  margin: 1.5rem 0;
+}
+
+.signupline {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+#load {
+  margin: auto;
+  width: 100%;
+  height: -webkit-fill-available;
+  position: fixed;
+  background: #fff url(/images/Spin-Preloader-1.gif) no-repeat center;
+  z-index: 9999999;
+}
+
+.welcome h1 {
+  font-family: "Prompt", sans-serif;
+  font-weight: 500;
+  margin: 0 0 0.5rem 0;
+  font-size: 1.8em;
+}
+
+.welcome span {
+  font-family: "Poppins";
+  color: #8e8d8d;
+  font-size: 0.9rem;
+}
+
+.inputs span {
+  font-family: "Poppins";
+  font-weight: 600;
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.inputbox {
+  width: 100%;
+  padding: 0.8rem 1.2rem;
+  border: 1px solid #c7c7c7;
+  border-radius: 10px;
+  font: normal 1rem / normal "Poppins";
+  color: #000000;
+  box-sizing: border-box;
+  margin-bottom: 1rem;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper .inputbox {
+  padding-right: 2.5rem;
+}
+
+.password-toggle {
+  position: absolute;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  color: #8e8d8d;
+}
+
+.forgotpass {
+  text-align: right;
+  margin: 1rem 0;
+}
+
+.forgotpass span {
+  font-family: "Poppins";
+  font-weight: 650;
+  font-size: 0.9rem;
+  color: var(--main-icon-color);
+  cursor: pointer;
+}
+
+.back {
+  margin: 1rem 0;
+}
+
+.back a {
+  text-decoration: none;
+  color: var(--main-icon-color);
+  font-weight: 600;
+}
+
+.signin {
+  width: 100%;
+  padding: 0.8rem;
+  border: none;
+  border-radius: 10px;
+  font: normal 1rem / normal "Poppins";
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+  background: linear-gradient(0deg, rgba(96, 9, 240, 1) 0%, var(--main-icon-color) 100%);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.signin:hover {
+  box-shadow: 4px 4px 6px 0 rgba(255, 255, 255, 0.5),
+              -4px -4px 6px 0 rgba(116, 125, 136, 0.5),
+              inset -4px -4px 6px 0 rgba(255, 255, 255, 0.2),
+              inset 4px 4px 6px 0 rgba(0, 0, 0, 0.4);
+}
+
+.signupline {
+  font-family: "Poppins";
+  color: #8e8d8d;
+  font-size: 0.9rem;
+}
+
+.signupbutton,
+.signinbutton {
+  font-family: "Poppins";
+  font-weight: 650;
+  color: var(--main-icon-color);
+  cursor: pointer;
+  margin-left: 0.3rem;
+}
+
+.register {
+  display: none;
+}
+
+/* Responsive adjustments */
+@media screen and (max-width: 1440px) {
+  .container {
+    margin-left: 8rem;
+    gap: 3rem;
+  }
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    margin-left: 4rem;
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .container {
+    margin-left: 2rem;
+    gap: 2rem;
+  }
+  
+  .form-container {
+    padding: 1.8rem;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .container {
+    flex-direction: column-reverse;
+    margin-left: 0;
+    padding: 1.5rem;
+    gap: 2rem;
+  }
+  
+  .image-container, 
+  .form-container {
+    max-width: 100%;
+    width: 100%;
+  }
+  
+  .image-container img {
+    max-height: 300px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .form-container {
+    padding: 1.5rem;
+  }
+  
+  .welcome h1 {
+    font-size: 1.5rem;
+  }
+  
+  .inputbox {
+    padding: 0.7rem 1rem;
+  }
+}
