@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" href="/logo.png" />
+  <link rel="stylesheet" href="css/login.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/css/all.min.css" />
+  <!-- Add Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+  <script src="../js/firebase-config.js"></script>
+  <script src="../js/auth.js"></script>
+
+  <style>
+    /* Custom CSS for alert messages */
+    .alert {
+      display: none;
+      position: fixed;
+      top: 10%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      padding: 20px;
+      color: white;
+      text-align: center;
+      border-radius: 6px;
+      box-shadow: 0px 0px 10px 0px #262626;
+      opacity: 0.8;
+      transition: all 0.3s ease-in-out;
+      z-index: 1;
+    }
+
+    #emptyFieldsAlert,
+    #errorAlert {
+      background-color: #f44336;
+    }
+
+    #loginAlert,
+    #signupAlert {
+      background-color: #4caf50;
+    }
+
+    input[type="password"]::-webkit-credentials-auto-fill-button,
+    input[type="password"]::-webkit-contacts-auto-fill-button,
+    input[type="password"]::-ms-reveal {
+      display: none;
+    }
+  </style>
+  <title>Login</title>
+</head>
+
+<body onload="myfunction()">
+  <div class="container">
+    <div class="image-container">
+      <img src="../images/signupill.png" alt="Illustration" />
+    </div>
+    
+    <div class="form-container">
+      <div class="login">
+        <div class="welcome">
+          <h1 class="titletext">Welcome Back &#x1F917</h1>
+          <span>Please enter your details.</span>
+        </div>
+        
+        <div class="inputs">
+          <span>Email</span>
+          <input class="inputbox" placeholder="Enter your email" id="loginEmail" />
+          
+          <span>Password</span>
+          <div class="password-wrapper">
+            <input type="password" class="inputbox" placeholder="Enter Password" id="loginPassword" />
+            <i class="fas fa-eye-slash password-toggle" id="toggleLoginPassword"></i>
+          </div>
+        </div>
+        
+        <div class="forgotpass">
+          <span>Forgot Password</span>
+        </div>
+        
+        <p class="back"><a class="tag" href="../index.html">&#8592; Back</a></p>
+        
+        <div class="button">
+          <input type="button" class="signin" value="Sign in" id="loginButton" />
+        </div>
+        
+        <div class="signupline">
+          <span>Don't have an account?</span>
+          <span class="signupbutton"> Sign up</span>
+        </div>
+      </div>
+      
+      <div class="register">
+        <div class="welcome">
+          <h1 class="titletext">Create an account</h1>
+          <span>Let's get started.</span>
+        </div>
+        
+        <div class="inputs">
+          <span>Username</span>
+          <input class="inputbox" placeholder="Enter your username" id="signupUsername" />
+          
+          <span>Email</span>
+          <input class="inputbox" placeholder="Enter your email" id="signupEmail" />
+          
+          <span>Password</span>
+          <div class="password-wrapper">
+            <input type="password" class="inputbox" placeholder="••••••••" id="signupPassword" />
+            <i class="fas fa-eye-slash password-toggle" id="toggleSignupPassword"></i>
+          </div>
+        </div>
+        
+        <p class="back"><a class="tag" href="../index.html">&#8592; Back</a></p>
+        
+        <div class="button">
+          <input type="button" class="signin" value="Sign up" id="signupButton" />
+        </div>
+        
+        <div class="signupline">
+          <span>Already have an account?</span>
+          <span class="signinbutton"> Sign in</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert" id="emptyFieldsAlert" style="display: none">
+    Please fill in all fields!
+  </div>
+  <div class="alert" id="errorAlert" style="display: none"></div>
+
+  <!-- Success messages -->
+  <div class="alert" id="loginAlert">Sign in successful!</div>
+  <div class="alert" id="signupAlert">Sign up successful!</div>
+
+  <script>
+    const signin_btn = document.querySelector(".signinbutton");
+    const signup_btn = document.querySelector(".signupbutton");
+    const register = document.querySelector(".register");
+    const login = document.querySelector(".login");
+
+    signup_btn.addEventListener("click", () => {
+      register.style.display = "block";
+      login.style.display = "none";
+    });
+
+    signin_btn.addEventListener("click", () => {
+      register.style.display = "none";
+      login.style.display = "block";
+    });
+
+    loginButton.addEventListener("click", () => {
+      const emailInput = document.getElementById("loginEmail");
+      const passwordInput = document.getElementById("loginPassword");
+      const loginAlert = document.getElementById("loginAlert");
+
+      if (emailInput.value.trim() === "" || passwordInput.value.trim() === "") {
+        const emptyFieldsAlert = document.getElementById("emptyFieldsAlert");
+        emptyFieldsAlert.style.display = "block";
+        setTimeout(() => {
+          emptyFieldsAlert.style.display = "none";
+        }, 3000);
+      } else {
+        // Sign in with Firebase
+        auth.signInWithEmailAndPassword(emailInput.value.trim(), passwordInput.value.trim())
+          .then((userCredential) => {
+            // Signed in
+            localStorage.setItem("isLoggedIn", "true");
+            emailInput.value = "";
+            passwordInput.value = "";
+
+            loginAlert.style.display = "block";
+            setTimeout(() => {
+              loginAlert.style.display = "none";
+              window.location.href = "../index.html";
+            }, 3000);
+          })
+          .catch((error) => {
+            const errorAlert = document.getElementById("errorAlert");
+            let friendlyMessage = "An error occurred. Please try again.";
+            
+            switch(error.code) {
+              case 'auth/invalid-email':
+                friendlyMessage = "Please enter a valid email address";
+                break;
+              case 'auth/user-not-found':
+                friendlyMessage = "No account found with this email";
+                break;
+              case 'auth/wrong-password':
+                friendlyMessage = "Incorrect password. Please try again";
+                break;
+              case 'auth/too-many-requests':
+                friendlyMessage = "Too many attempts. Please try again later";
+                break;
+            }
+            
+            errorAlert.textContent = friendlyMessage;
+            errorAlert.style.display = "block";
+            setTimeout(() => {
+              errorAlert.style.display = "none";
+            }, 5000);
+          });
+      }
+    });
+
+    signupButton.addEventListener("click", () => {
+      const usernameInput = document.getElementById("signupUsername");
+      const emailInput = document.getElementById("signupEmail");
+      const passwordInput = document.getElementById("signupPassword");
+      const signupAlert = document.getElementById("signupAlert");
+
+      if (
+        usernameInput.value.trim() === "" ||
+        emailInput.value.trim() === "" ||
+        passwordInput.value.trim() === ""
+      ) {
+        const emptyFieldsAlert = document.getElementById("emptyFieldsAlert");
+        emptyFieldsAlert.style.display = "block";
+        setTimeout(() => {
+          emptyFieldsAlert.style.display = "none";
+        }, 3000);
+      } else {
+        // Create user with Firebase
+        auth.createUserWithEmailAndPassword(emailInput.value.trim(), passwordInput.value.trim())
+          .then((userCredential) => {
+            // Signed up
+            const user = userCredential.user;
+            // Store additional user data
+            user.updateProfile({
+              displayName: usernameInput.value.trim()
+            });
+
+            usernameInput.value = "";
+            emailInput.value = "";
+            passwordInput.value = "";
+
+            signupAlert.style.display = "block";
+            setTimeout(() => {
+              signupAlert.style.display = "none";
+              register.style.display = "none";
+              login.style.display = "block";
+            }, 3000);
+          })
+          .catch((error) => {
+            const errorAlert = document.getElementById("errorAlert");
+            let friendlyMessage = "An error occurred. Please try again.";
+            
+            switch(error.code) {
+              case 'auth/email-already-in-use':
+                friendlyMessage = "This email is already registered";
+                break;
+              case 'auth/invalid-email':
+                friendlyMessage = "Please enter a valid email address";
+                break;
+              case 'auth/weak-password':
+                friendlyMessage = "Password should be at least 6 characters";
+                break;
+            }
+            
+            errorAlert.textContent = friendlyMessage;
+            errorAlert.style.display = "block";
+            setTimeout(() => {
+              errorAlert.style.display = "none";
+            }, 5000);
+          });
+      }
+    });
+  </script>
+  <script>
+    const preloader = document.getElementById("load");
+    function myfunction() {
+      preloader.style.display = "none";
+    }
+    const toggleLoginPassword = document.querySelector("#toggleLoginPassword");
+    const loginPassword = document.getElementById("loginPassword");
+
+    toggleLoginPassword.addEventListener("click", function (e) {
+      if (loginPassword.type == "text") {
+        loginPassword.type = "password";
+        toggleLoginPassword.className = "fas fa-eye-slash";
+      }
+      else if (loginPassword.type == "password") {
+        loginPassword.type = "text";
+        toggleLoginPassword.className = "fas fa-eye";
+      }
+    });
+
+    const toggleSignupPassword = document.querySelector("#toggleSignupPassword");
+    const signupPassword = document.getElementById("signupPassword");
+
+    toggleSignupPassword.addEventListener("click", function (e) {
+      if (signupPassword.type == "text") {
+        signupPassword.type = "password";
+        toggleSignupPassword.className = "fas fa-eye-slash";
+      }
+      else if (signupPassword.type == "password") {
+        signupPassword.type = "text";
+        toggleSignupPassword.className = "fas fa-eye";
+      }
+    });
+  </script>
+</body>
+</html>
